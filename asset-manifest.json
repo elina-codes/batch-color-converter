@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/batch-color-converter/static/css/main.4b5d2990.css",
-    "main.js": "/batch-color-converter/static/js/main.6923a8fd.js",
+    "main.css": "/batch-color-converter/static/css/main.dbe7e2d9.css",
+    "main.js": "/batch-color-converter/static/js/main.8362f514.js",
     "static/js/787.0e90b31e.chunk.js": "/batch-color-converter/static/js/787.0e90b31e.chunk.js",
     "index.html": "/batch-color-converter/index.html",
-    "main.4b5d2990.css.map": "/batch-color-converter/static/css/main.4b5d2990.css.map",
-    "main.6923a8fd.js.map": "/batch-color-converter/static/js/main.6923a8fd.js.map",
+    "main.dbe7e2d9.css.map": "/batch-color-converter/static/css/main.dbe7e2d9.css.map",
+    "main.8362f514.js.map": "/batch-color-converter/static/js/main.8362f514.js.map",
     "787.0e90b31e.chunk.js.map": "/batch-color-converter/static/js/787.0e90b31e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4b5d2990.css",
-    "static/js/main.6923a8fd.js"
+    "static/css/main.dbe7e2d9.css",
+    "static/js/main.8362f514.js"
   ]
 }
