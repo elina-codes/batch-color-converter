@@ -94,6 +94,16 @@ export default function ConversionView() {
   const colorStringToNumberArray = (value: string) =>
     value.split(",").map((v) => Number(v));
 
+  const validateColorFormat = (value: string, converted: Number[]) => {
+    if (
+      (fromType === "hex" && !value.startsWith("#")) ||
+      (fromType !== "hex" && !value.startsWith(fromType)) ||
+      converted.includes(NaN)
+    ) {
+      throw new Error("Invalid color");
+    }
+  };
+
   const convertColors = async (colors: string) => {
     try {
       setError(false);
@@ -103,12 +113,9 @@ export default function ConversionView() {
         const parsed =
           fromType === "hex" ? sanitized : colorStringToNumberArray(sanitized);
         const converted = convert[fromType][toType](parsed);
-        if (converted.includes(NaN)) {
-          throw new Error("Invalid color");
-        }
 
-        const convertedString = formatColor(converted, toType);
-        return convertedString;
+        validateColorFormat(input, converted);
+        return formatColor(converted, toType);
       });
       return result;
     } catch (error) {
