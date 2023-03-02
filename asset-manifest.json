@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/batch-color-converter/static/css/main.c40e1801.css",
+    "main.js": "/batch-color-converter/static/js/main.838f3179.js",
+    "static/js/787.0e90b31e.chunk.js": "/batch-color-converter/static/js/787.0e90b31e.chunk.js",
+    "index.html": "/batch-color-converter/index.html",
+    "main.c40e1801.css.map": "/batch-color-converter/static/css/main.c40e1801.css.map",
+    "main.838f3179.js.map": "/batch-color-converter/static/js/main.838f3179.js.map",
+    "787.0e90b31e.chunk.js.map": "/batch-color-converter/static/js/787.0e90b31e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c40e1801.css",
+    "static/js/main.838f3179.js"
+  ]
+}
