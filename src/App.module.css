@@ -9,6 +9,12 @@
   color: #ddd;
 }
 
+@media screen and (max-width: 1000px) {
+  .app {
+    padding: 50px 5%;
+  }
+}
+
 .header {
   display: flex;
   align-items: center;
@@ -24,6 +30,12 @@
 .title {
   font-size: 60px;
   font-weight: 900;
+}
+
+@media screen and (max-width: 1000px) {
+  .title {
+    font-size: 40px;
+  }
 }
 
 .subTitle {

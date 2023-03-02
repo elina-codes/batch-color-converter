@@ -34,6 +34,12 @@
 }
 
 @media screen and (max-width: 1000px) {
+  .codeContainer {
+    height: 300px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
   .textboxContainer:last-child .tabs {
     order: -1;
   }
