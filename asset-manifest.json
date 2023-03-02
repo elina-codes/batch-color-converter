@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/batch-color-converter/static/css/main.4b5d2990.css",
-    "main.js": "/batch-color-converter/static/js/main.b9635a32.js",
+    "main.js": "/batch-color-converter/static/js/main.5b941e51.js",
     "static/js/787.0e90b31e.chunk.js": "/batch-color-converter/static/js/787.0e90b31e.chunk.js",
     "index.html": "/batch-color-converter/index.html",
     "main.4b5d2990.css.map": "/batch-color-converter/static/css/main.4b5d2990.css.map",
-    "main.b9635a32.js.map": "/batch-color-converter/static/js/main.b9635a32.js.map",
+    "main.5b941e51.js.map": "/batch-color-converter/static/js/main.5b941e51.js.map",
     "787.0e90b31e.chunk.js.map": "/batch-color-converter/static/js/787.0e90b31e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4b5d2990.css",
-    "static/js/main.b9635a32.js"
+    "static/js/main.5b941e51.js"
   ]
 }
