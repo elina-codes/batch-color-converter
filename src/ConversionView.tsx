@@ -80,7 +80,7 @@ export default function ConversionView() {
       case "hsv":
         return `hsv(${value[0]},${value[1]}%,${value[2]}%)`;
       case "hwb":
-        return `hwb(${value})`;
+        return `hwb(${value[0]},${value[1]}%,${value[2]}%)`;
       case "cmyk":
         return `cmyk(${value.map((v) => `${v}%`)})`;
       case "hex":
