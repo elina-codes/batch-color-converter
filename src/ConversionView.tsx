@@ -67,8 +67,7 @@ export default function ConversionView() {
   };
 
   const sanitizeColor = (value: string) => {
-    const pattern = new RegExp(`^${fromType}\((.*?)\)$`);
-    return value.replace(pattern, "$1");
+    return value.replace(fromType, "").replace(/[\s()%]/g, "");
   };
 
   const formatColor = (value: Number[], type: ConversionType) => {
@@ -90,13 +89,18 @@ export default function ConversionView() {
     }
   };
 
+  const colorStringToNumberArray = (value: string) =>
+    value.split(",").map((v) => Number(v));
+
   const convertColors = async (colors: string) => {
     try {
       setError(false);
       const inputArray = colors.split("\n");
       const result = await inputArray.map((input: string) => {
         const sanitized = sanitizeColor(input);
-        const converted = convert[fromType][toType](sanitized);
+        const parsed =
+          fromType === "hex" ? sanitized : colorStringToNumberArray(sanitized);
+        const converted = convert[fromType][toType](parsed);
         if (converted.includes(NaN)) {
           throw new Error("Invalid color");
         }
