@@ -39,6 +39,8 @@ export default function ConversionView() {
     type: InputType
   ) => {
     e.preventDefault();
+    setError(false);
+
     if (type === "from") {
       setFromType(value);
     } else {
