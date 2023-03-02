@@ -1,0 +1,37 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 100px 5%;
+  background: #111;
+  color: #ddd;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+.content {
+  width: 100%;
+  max-width: 1000px;
+}
+
+.title {
+  font-size: 60px;
+  font-weight: 900;
+}
+
+.subTitle {
+  max-width: 350px;
+}
+
+.titleHighlight {
+  background: var(--gradient-background);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}

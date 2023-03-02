@@ -1,0 +1,148 @@
+.error {
+  color: var(--secondary-color);
+  padding: 5px 20px;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.container {
+  display: flex;
+  gap: 40px;
+}
+
+@media screen and (max-width: 1000px) {
+  .container {
+    gap: 20px;
+    flex-direction: column;
+  }
+}
+
+.codeContainer {
+  width: 100%;
+  border-width: 4px;
+  border-style: solid;
+  background: #0c0c0c;
+  padding: 20px;
+  color: inherit;
+  height: 400px;
+  display: block;
+  margin-top: 10px;
+}
+
+.codeContainer:focus {
+  outline: none;
+  border-image: var(--gradient-background) 1;
+}
+
+@media screen and (max-width: 1000px) {
+  .textboxContainer:last-child .tabs {
+    order: -1;
+  }
+}
+
+.textboxContainer {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+}
+
+.tabs {
+  margin-top: 50px;
+}
+
+.tabs button {
+  padding: 15px 5px;
+}
+
+.tabs button:hover {
+  opacity: 0.6;
+}
+
+.disabled {
+  opacity: 0.3;
+  cursor: default;
+  pointer-events: none;
+}
+
+.active {
+  background: var(--gradient-background);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.label {
+  flex: 1;
+  font-weight: 900;
+  font-size: 40px;
+}
+
+.labelText {
+  display: flex;
+  align-items: end;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+@media screen and (max-width: 1000px) {
+  .buttonContainer {
+    flex-direction: row;
+    margin-left: 85px;
+  }
+  .buttonContainer button {
+    flex: 1;
+  }
+  .buttonContainer svg {
+    transform: rotate(90deg);
+  }
+}
+
+.submitButton {
+  color: #111;
+  background: var(--primary-color);
+  background: var(--gradient-background);
+}
+
+.submitButton:focus,
+.submitButton:hover,
+.resetButton:focus,
+.resetButton:hover {
+  outline: none;
+  background: var(--primary-color);
+  color: #fff;
+}
+
+.resetButton {
+  background: #222;
+}
+
+.swapButton {
+  padding: 0;
+  gap: 0;
+}
+
+.swapButton:not(:disabled):hover,
+.copyButton:not(:disabled):hover{
+  outline: none;
+  color: var(--primary-color)
+}
+
+.outputWrapper {
+  position: relative;
+}
+
+.copyButton {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 15px;
+}
+
+.copyButton:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
