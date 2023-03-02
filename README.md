@@ -6,7 +6,7 @@ Convert multiple colors in batches.
 
 Supports RGB, HEX, HSL, HSV, HWB, and CMYK formats.
 
-<img alt="Batch Color Converter App Screenshot" src="src/assets/app-screenshot.png" width="700" />
+<img alt="Batch Color Converter App Screenshot" src="public/batch-color-converter.png" width="800" />
 
 ## Tools
 
