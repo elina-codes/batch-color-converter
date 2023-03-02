@@ -6,7 +6,7 @@ import {
 } from "react-icons/md";
 import { useCopyToClipboard } from "usehooks-ts";
 import styles from "./ConversionView.module.css";
-import { colorFormats, ConversionType } from "./helpers";
+import { colorFormats, ConversionType, InputType } from "./helpers";
 var convert = require("color-convert");
 
 export default function ConversionView() {
@@ -36,7 +36,7 @@ export default function ConversionView() {
   const onTypeClick = (
     e: SyntheticEvent,
     value: ConversionType,
-    type: "from" | "to"
+    type: InputType
   ) => {
     e.preventDefault();
     if (type === "from") {
@@ -60,48 +60,48 @@ export default function ConversionView() {
   const handleTypeClick = (
     e: SyntheticEvent,
     value: ConversionType,
-    type: "from" | "to"
+    type: InputType
   ) => {
     e.preventDefault();
     onTypeClick(e, value, type);
   };
 
+  const sanitizeColor = (value: string) => {
+    const pattern = new RegExp(`^${fromType}\((.*?)\)$`);
+    return value.replace(pattern, "$1");
+  };
+
+  const formatColor = (value: Number[], type: ConversionType) => {
+    switch (type) {
+      case "rgb":
+        return `rgb(${value})`;
+      case "hsl":
+        return `hsl(${value[0]},${value[1]}%,${value[2]}%)`;
+      case "hsv":
+        return `hsv(${value[0]},${value[1]}%,${value[2]}%)`;
+      case "hwb":
+        return `hwb(${value})`;
+      case "cmyk":
+        return `cmyk(${value.map((v) => `${v}%`)})`;
+      case "hex":
+        return `#${value}`;
+      default:
+        return value;
+    }
+  };
+
   const convertColors = async (colors: string) => {
-    const sanitize = (value: string) => {
-      const pattern = new RegExp(`^${fromType}\((.*?)\)$`);
-      return value.replace(pattern, "$1");
-    };
-
-    const formatColor = (value: Number[]) => {
-      switch (toType) {
-        case "rgb":
-          return `rgb(${value})`;
-        case "hsl":
-          return `hsl(${value[0]},${value[1]}%,${value[2]}%)`;
-        case "hsv":
-          return `hsv(${value[0]},${value[1]}%,${value[2]}%)`;
-        case "hwb":
-          return `hwb(${value})`;
-        case "cmyk":
-          return `cmyk(${value.map((v) => `${v}%`)})`;
-        case "hex":
-          return `#${value}`;
-        default:
-          return value;
-      }
-    };
-
     try {
       setError(false);
       const inputArray = colors.split("\n");
       const result = await inputArray.map((input: string) => {
-        const sanitized = sanitize(input);
+        const sanitized = sanitizeColor(input);
         const converted = convert[fromType][toType](sanitized);
         if (converted.includes(NaN)) {
           throw new Error("Invalid color");
         }
 
-        const convertedString = formatColor(converted);
+        const convertedString = formatColor(converted, toType);
         return convertedString;
       });
       return result;
@@ -118,6 +118,18 @@ export default function ConversionView() {
     setResult(result.join("\n"));
   };
 
+  const getPlaceholder = () => {
+    const placeholderColors = ["#7200e3", "#f8612b", "#fd1d1d"];
+    if (fromType === "hex") return placeholderColors.join("\n");
+
+    const convertedPlaceholders = placeholderColors.map((color) => {
+      const converted = convert.hex[fromType](color);
+      return formatColor(converted, fromType);
+    });
+
+    return convertedPlaceholders.join("\n");
+  };
+
   return (
     <form onSubmit={handleSubmit} className={styles.container}>
       <div className={styles.textboxContainer}>
@@ -125,14 +137,7 @@ export default function ConversionView() {
           {colorFormats.map((format) => (
             <button
               key={format}
-              className={
-                fromType === format
-                  ? styles.active
-                  : toType === format
-                  ? styles.disabled
-                  : ""
-              }
-              disabled={toType === format}
+              className={fromType === format ? styles.active : ""}
               onClick={(e) => handleTypeClick(e, format, "from")}
             >
               {format.toUpperCase()}
@@ -155,15 +160,18 @@ export default function ConversionView() {
             cols={30}
             className={styles.codeContainer}
             ref={fromTypeRef}
-            placeholder={`rgb(253,29,29)
-rgb(114, 0, 227)
-rgb(248, 97, 43)`}
+            placeholder={getPlaceholder()}
           />
         </label>
       </div>
 
       <div className={styles.buttonContainer}>
-        <button title="Convert" type="submit" className={styles.submitButton}>
+        <button
+          title="Convert"
+          type="submit"
+          disabled={fromType === toType}
+          className={styles.submitButton}
+        >
           <ConvertIcon size={30} />
         </button>
         <button
@@ -205,14 +213,7 @@ rgb(248, 97, 43)`}
           {colorFormats.map((format) => (
             <button
               key={format}
-              className={
-                toType === format
-                  ? styles.active
-                  : fromType === format
-                  ? styles.disabled
-                  : ""
-              }
-              disabled={fromType === format}
+              className={toType === format ? styles.active : ""}
               onClick={(e) => handleTypeClick(e, format, "to")}
             >
               {format.toUpperCase()}

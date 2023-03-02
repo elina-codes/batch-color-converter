@@ -102,9 +102,13 @@
 }
 
 .submitButton {
-  color: #111;
   background: var(--primary-color);
   background: var(--gradient-background);
+}
+
+.submitButton:disabled {
+  opacity: 0.3;
+  pointer-events: none;
 }
 
 .submitButton:focus,
